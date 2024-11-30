@@ -1,0 +1,101 @@
+occupation,age,years_experience,education_level,technical_skills,communication_skills,adaptability,industry_automation_level
+ESL Teacher,36,5,3,8.0,7.0,8,5
+Dietitian,57,0,2,6.0,,6,1
+Drama Teacher,25,26,2,3.0,9.0,10,10
+Social Worker,29,16,2,5.0,,7,2
+Firefighter,33,29,1,6.0,3.0,2,9
+Optometrist,56,0,2,9.0,5.0,8,8
+Journalist,50,3,4,,,6,8
+Dentist,46,23,2,6.0,9.0,9,5
+Chef,56,2,3,,3.0,9,9
+Mechanical Engineer,44,19,1,4.0,,4,8
+Meteorologist,49,1,1,9.0,8.0,2,8
+Statistician,56,3,1,,,6,6
+Radiologist,38,39,2,,2.0,7,2
+Radiologist,49,0,2,5.0,3.0,6,4
+Geneticist,23,21,2,7.0,,1,2
+Mathematician,60,9,4,1.0,9.0,9,4
+Audiologist,43,16,3,,4.0,2,4
+Journalist,52,14,1,,,4,8
+Librarian,56,9,4,3.0,8.0,10,1
+Zoologist,56,35,3,2.0,7.0,8,9
+Social Worker,39,28,1,4.0,7.0,2,8
+Psychiatrist,23,6,4,,3.0,6,3
+Carpenter,61,13,1,5.0,,1,8
+Electrician,24,34,4,,1.0,2,2
+Personal Trainer,40,18,4,,3.0,6,4
+Geneticist,57,27,2,4.0,,7,2
+Psychologist,56,39,2,,2.0,10,2
+Dentist,30,37,4,5.0,6.0,9,6
+Plumber,46,19,1,,9.0,7,10
+Novelist,40,20,3,3.0,,10,4
+Mathematician,46,0,4,10.0,,7,5
+Film Director,23,13,2,8.0,,3,2
+Personal Trainer,33,34,3,,,3,3
+Software Developer,37,30,2,2.0,10.0,7,9
+Sociologist,28,24,4,3.0,4.0,3,7
+Neurologist,50,26,2,2.0,,6,4
+Acupuncturist,27,2,4,,,6,8
+Pilot,64,29,4,7.0,9.0,2,8
+Psychiatrist,23,17,1,9.0,1.0,4,9
+Novelist,38,22,2,,,4,10
+Neurologist,29,39,3,9.0,,6,1
+Radiologist,51,31,1,9.0,2.0,2,2
+Statistician,29,23,2,,,8,8
+Acupuncturist,61,24,4,3.0,3.0,6,8
+Zoologist,61,2,4,6.0,,5,6
+Architect,56,19,2,,2.0,10,1
+Audiologist,60,26,1,10.0,,8,4
+Biologist,27,8,1,1.0,7.0,2,6
+Screenwriter,40,8,1,7.0,1.0,8,8
+Orthodontist,62,18,1,10.0,9.0,1,2
+Nutritionist,33,32,1,,,9,10
+Occupational Therapist,38,26,1,8.0,,8,3
+Sociologist,63,3,2,,6.0,9,1
+Film Director,24,27,3,,9.0,8,7
+Cardiologist,48,1,1,8.0,10.0,10,2
+Veterinarian,54,8,2,7.0,,1,2
+Nurse,50,2,2,,,7,7
+Physicist,39,22,4,8.0,10.0,6,7
+Audiologist,35,16,1,7.0,,10,5
+Geneticist,27,6,4,,10.0,10,2
+Marketing Manager,57,0,4,,7.0,10,5
+Police Officer,61,31,1,8.0,9.0,2,8
+Screenwriter,29,29,1,2.0,10.0,3,5
+Web Developer,54,33,4,,4.0,6,3
+Veterinarian,26,13,4,10.0,,7,1
+Librarian,59,33,1,9.0,3.0,10,7
+Marketing Manager,43,17,4,,10.0,10,4
+Chef,56,7,1,3.0,2.0,2,5
+Dietitian,47,27,3,,,5,7
+Pharmacist,41,8,3,5.0,,3,5
+Physicist,64,9,3,,8.0,3,6
+Novelist,46,30,1,,10.0,1,10
+TV Presenter,49,8,4,6.0,10.0,2,8
+Dentist,45,18,3,,9.0,3,9
+Translator,38,30,1,10.0,7.0,10,8
+Architect,60,37,3,,5.0,8,10
+Microbiologist,47,11,2,,,6,1
+TV Presenter,54,39,4,9.0,,4,2
+Psychiatrist,42,8,1,8.0,3.0,7,6
+Photographer,24,27,1,2.0,3.0,2,4
+Chemist,60,34,2,2.0,,5,9
+Anthropologist,42,20,1,1.0,3.0,6,10
+Occupational Therapist,36,38,2,10.0,6.0,10,3
+Librarian,51,25,1,6.0,,3,10
+Copywriter,22,11,1,,,10,4
+Surgeon,56,25,3,10.0,10.0,4,7
+Astronomer,31,25,2,,7.0,7,10
+Veterinarian,51,7,4,,,10,4
+Mechanical Engineer,47,33,4,1.0,,5,7
+Electrician,23,31,1,,3.0,9,7
+Drama Teacher,24,35,4,10.0,,7,1
+Editor,51,10,3,,,7,9
+Software Developer,51,23,4,7.0,,4,4
+Archivist,54,36,1,,2.0,3,4
+Electrician,27,32,2,6.0,,5,2
+Architect,44,21,1,,6.0,1,6
+Pediatrician,51,10,1,2.0,,2,4
+Fitness Trainer,60,24,3,2.0,,7,10
+Accountant,44,13,2,,,9,6
+Special Education Teacher,42,12,2,3.0,7.0,3,10
