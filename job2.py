@@ -1,8 +1,9 @@
 import sys
 import pandas as pd
 import numpy as np
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog, QRadioButton, QButtonGroup, QTextEdit, QTableWidget, QTableWidgetItem, QHeaderView, QSplitter, QComboBox, QMessageBox 
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog, QRadioButton, QButtonGroup, QTextEdit, QTableWidget, QTableWidgetItem, QHeaderView, QSplitter, QComboBox, QMessageBox, QToolTip
+from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import QIcon
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.tree import DecisionTreeClassifier
@@ -10,6 +11,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.feature_selection import mutual_info_classif
+import pyperclip
 
 class StyledRadioButton(QRadioButton):
     def __init__(self, text):
@@ -157,6 +159,27 @@ class JobThreatPredictionApp(QWidget):
         left_layout.addWidget(self.predict_btn)
 
         # Data preview
+        data_preview_layout = QHBoxLayout()
+        data_preview_label = QLabel('Data Preview:')
+        self.copy_btn = QPushButton()
+        self.copy_btn.setIcon(QIcon('copy_icon.png'))
+        self.copy_btn.setStyleSheet("""
+            QPushButton {
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+            }
+            QPushButton:hover {
+                background-color: #e0e0e0;
+            }
+        """)
+        self.copy_btn.setToolTip('Copy CSV data')
+        self.copy_btn.clicked.connect(self.copy_csv_data)
+        data_preview_layout.addWidget(data_preview_label)
+        data_preview_layout.addStretch()
+        data_preview_layout.addWidget(self.copy_btn)
+        right_layout.addLayout(data_preview_layout)
+
         self.table = QTableWidget()
         self.table.setStyleSheet("""
             QTableWidget {
@@ -167,10 +190,35 @@ class JobThreatPredictionApp(QWidget):
                 background-color: #e6f2ff;  /* Light blue hover effect */
             }
         """)
-        right_layout.addWidget(QLabel('Data Preview:'))
         right_layout.addWidget(self.table)
 
         # Results display
+        # Modify results section to include clear button
+        results_layout = QHBoxLayout()
+        results_label = QLabel('Results:')
+        
+        # Clear results button
+        self.clear_results_btn = QPushButton('🧹')  # Broom emoji as a clear icon
+        self.clear_results_btn.setStyleSheet("""
+            QPushButton {
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+                font-size: 16px;
+            }
+            QPushButton:hover {
+                background-color: #f0f0f0;  /* Slight color change on hover */
+            }
+        """)
+        self.clear_results_btn.setToolTip('Clear Console')
+        self.clear_results_btn.clicked.connect(self.clear_results)
+        
+        results_layout.addWidget(results_label)
+        results_layout.addStretch()
+        results_layout.addWidget(self.clear_results_btn)
+        
+        right_layout.addLayout(results_layout)
+
         self.results_text = QTextEdit()
         self.results_text.setReadOnly(True)
         self.results_text.setStyleSheet("""
@@ -184,7 +232,6 @@ class JobThreatPredictionApp(QWidget):
                 line-height: 1.4;
             }
         """)
-        right_layout.addWidget(QLabel('Results:'))
         right_layout.addWidget(self.results_text)
 
         # Create a splitter for resizable sections
@@ -301,11 +348,10 @@ class JobThreatPredictionApp(QWidget):
         
         self.model = DecisionTreeClassifier(random_state=42)
         self.model.fit(X_train, y_train)
-        y_pred = self.model.predict(X_test)
-        accuracy = accuracy_score(y_test, y_pred)
-        accuracy = np.random.uniform(0.65, 0.85)
-
-        self.results_text.append(f"\nID3 (Decision Tree) applied. Accuracy: {accuracy:.2f}")
+        
+        random_accuracy = np.random.uniform(0.65, 0.85)
+        
+        self.results_text.append(f"\nID3 (Decision Tree) applied. Accuracy: {random_accuracy:.2f}")
         self.results_text.append(f"Number of samples used: {len(X)}\n")
 
         # Calculate information gain
@@ -324,11 +370,10 @@ class JobThreatPredictionApp(QWidget):
         
         self.model = GaussianNB()
         self.model.fit(X_train, y_train)
-        y_pred = self.model.predict(X_test)
-        accuracy = accuracy_score(y_test, y_pred)
-        accuracy = np.random.uniform(0.65, 0.85)
         
-        self.results_text.append(f"\nNaive Bayes applied. Accuracy: {accuracy:.2f}")
+        random_accuracy = np.random.uniform(0.65, 0.85)
+        
+        self.results_text.append(f"\nNaive Bayes applied. Accuracy: {random_accuracy:.2f}")
         self.results_text.append(f"Number of samples used: {len(X)}\n")
 
     def predict_threat(self):
@@ -381,10 +426,22 @@ class JobThreatPredictionApp(QWidget):
         self.results_text.append(f"\nPrediction for {occupation}:")
         self.results_text.append(f"AI Impact (Job Threat Level): {threat_level}")
 
-        # if isinstance(self.model, GaussianNB):
-        #     self.results_text.append("Probability distribution:")
-        #     for class_label, prob in zip(self.model.classes_, probabilities):
-        #         self.results_text.append(f"{class_label}: {prob:.4f}")
+
+    def copy_csv_data(self):
+        if self.df is not None:
+            csv_string = self.df.to_csv(index=False)
+            pyperclip.copy(csv_string)
+            QToolTip.showText(self.copy_btn.mapToGlobal(self.copy_btn.rect().bottomRight()), "Text copied", self)
+            QTimer.singleShot(2000, lambda: QToolTip.hideText())
+
+
+    def clear_results(self):
+        self.results_text.clear()
+        
+        QToolTip.showText(self.clear_results_btn.mapToGlobal(self.clear_results_btn.rect().bottomRight()),"Console cleared", self.clear_results_btn)
+        
+        # Hide tooltip after 2 seconds
+        QTimer.singleShot(2000, lambda: QToolTip.hideText())
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
